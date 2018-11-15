@@ -39,8 +39,8 @@ public class Methods {
         }
         do{
             decode = askValidCode("Jugador 1", "Introduce un numero secreto entre 1 y 50");
-            if (decode>code)hint("Tu numero (" + decode + ") es mayor que el numero secreto\nIntentos restantes: "+tries);
-            else if (decode<code)hint("Tu numero (" + decode + ") es menor que el numero secreto\nIntentos restantes: "+tries);
+            if (decode>code)hint("Tu numero (" + decode + ") es mayor que el numero secreto\n"+diference(decode, code)+"\nIntentos restantes: "+tries);
+            else if (decode<code)hint("Tu numero (" + decode + ") es menor que el numero secreto\n"+diference(decode, code)+"\nIntentos restantes: "+tries);
             else break;
             tries--;
         }while(decode!=code && tries !=0);
@@ -60,24 +60,32 @@ public class Methods {
         }
 
     }
-    public static boolean pickOponent(){
+    public static boolean pickOponent() {
         String[] options = {"AI", "Humano"};
 
-        int newg = JOptionPane.showOptionDialog(null, "Elije Oponente?", "Boletin 10", 0,3,null, options, 0);
+        int newg = JOptionPane.showOptionDialog(null, "Elije Oponente?", "Boletin 10", 0, 3, null, options, 0);
         switch (newg) {
             case 0:
                 return true;
             default:
                 return false;
         }
-
     }
 
-
-
-
-
-
-
-
+    public static String diference(int i, int j) {
+        int k = Math.abs(i - j);
+        if (k > 20) return "moi lonxe";
+        else if (k <= 20 && k >= 10) return "lonxe";
+        else if (k < 10 && k > 5) return "preto";
+        else if (k <= 5 && k > 0) return "moi preto";
+        else return "";
+    }
 }
+
+
+
+
+
+
+
+
